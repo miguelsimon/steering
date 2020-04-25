@@ -1,4 +1,4 @@
-#include "PathFollowWorld.h"
+#include "WaypointWorld.h"
 #include "demo.h"
 
 #ifdef __EMSCRIPTEN__
@@ -6,7 +6,7 @@
 #endif
 
 int main() {
-    auto world = PathFollowWorld();
+    auto world = WaypointWorld();
 
     auto [win, ren] = demo_setup_sdl();
 

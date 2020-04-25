@@ -1,11 +1,11 @@
-#include "BPathFollow.h"
+#include "BWaypoint.h"
 #include <Eigen/Dense>
 #include <utility>
 #include <vector>
 
 using Eigen::Vector2f;
 
-BPathFollow::BPathFollow(float max_force, float desired_speed, float dt,
+BWaypoint::BWaypoint(float max_force, float desired_speed, float dt,
                          Vector2f p, Vector2f v, float mass,
                          std::vector<Eigen::Vector2f> path)
     : path_(path), path_idx_(0),
@@ -14,7 +14,7 @@ BPathFollow::BPathFollow(float max_force, float desired_speed, float dt,
     seek_.target_ = path[0];
 };
 
-auto BPathFollow::get_force() -> Vector2f {
+auto BWaypoint::get_force() -> Vector2f {
     const float min_goal_distance = 5;
     float distance = (seek_.target_ - seek_.p_).norm();
     if (distance < min_goal_distance) {
@@ -28,6 +28,6 @@ auto BPathFollow::get_force() -> Vector2f {
     return seek_.get_force();
 };
 
-void BPathFollow::set_p(Eigen::Vector2f p) { seek_.set_p(p); };
+void BWaypoint::set_p(Eigen::Vector2f p) { seek_.set_p(p); };
 
-void BPathFollow::set_v(Eigen::Vector2f v) { seek_.set_v(v); };
+void BWaypoint::set_v(Eigen::Vector2f v) { seek_.set_v(v); };

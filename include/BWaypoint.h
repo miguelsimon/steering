@@ -1,16 +1,16 @@
-#ifndef BPATHFOLLOW_H
-#define BPATHFOLLOW_H
+#ifndef BWAYPOINT_H
+#define BWAYPOINT_H
 
 #include <Eigen/Dense>
 #include <vector>
 
 #include "BSeek.h"
 
-class BPathFollow {
+class BWaypoint {
   public:
-    BPathFollow() = default;
+    BWaypoint() = default;
 
-    BPathFollow(float max_force, float desired_speed, float dt,
+    BWaypoint(float max_force, float desired_speed, float dt,
                 Eigen::Vector2f p, Eigen::Vector2f v, float mass,
                 std::vector<Eigen::Vector2f> path);
     Eigen::Vector2f get_force();
