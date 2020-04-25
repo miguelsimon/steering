@@ -6,7 +6,7 @@
 
 using Eigen::Vector2f;
 
-SeekWorld::SeekWorld() : target_({0, 0}), boid_({0, 0}, 10){};
+SeekWorld::SeekWorld() : target_({150, 150}), boid_({0, 0}, 10){};
 
 void SeekWorld::render(Draw &draw) {
     draw.target(target_);

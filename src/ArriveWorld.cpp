@@ -6,7 +6,7 @@
 
 using Eigen::Vector2f;
 
-ArriveWorld::ArriveWorld() : target_({0, 0}), boid_({0, 0}, 10){};
+ArriveWorld::ArriveWorld() : target_({150, 150}), boid_({0, 0}, 10){};
 
 void ArriveWorld::render(Draw &draw) {
     draw.target(target_);
