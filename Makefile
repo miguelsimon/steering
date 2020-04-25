@@ -16,6 +16,9 @@ fmt:
 	cd cmd && clang-format -i -style=file *.cpp
 	cd test && clang-format -i -style=file *.cpp
 
+# should integrate clang-tidy run into the cmake build at some point
+# https://gitlab.kitware.com/cmake/cmake/issues/18926
+.PHONY: tidy
 tidy:
 	clang-tidy src/*.cpp -checks=$(TIDY_CHECKS) -- $(CPPFLAGS) $(CXXFLAGS)
 
@@ -30,6 +33,19 @@ wasm-build:
 	cd wasm-build && \
 		emcmake cmake .. && \
 		emmake make
+
+.PHONY: docs
+docs: wasm-build
+	rm -rf docs
+	mkdir docs
+	pandoc website/index.md -o docs/index.html
+	cp wasm-build/*.wasm docs/
+	cp wasm-build/*.js docs/
+	cp wasm-build/*.html docs/
+
+.PHONY: local_server
+local_server: docs
+	cd docs && python3 -m http.server
 
 test: build
 	build/test

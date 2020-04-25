@@ -36,10 +36,7 @@ add_executable(test ${TEST_SOURCES})
 target_include_directories(test PRIVATE ${CATCH2_INCLUDES})
 target_link_libraries(test objs)
 
-# main target
-
-add_executable(main cmd/main.cpp)
-target_link_libraries(main objs)
+# main targets
 
 add_executable(demo_seek cmd/demo_seek.cpp)
 target_link_libraries(demo_seek objs)

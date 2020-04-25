@@ -23,6 +23,8 @@ git clone --recurse-submodules git@github.com:miguelsimon/steering.git
 ```
 
 * `make build` builds a locally-executable version under `./build`
-* `make wasm-build` builds html pages with WebAssembly under `./wasm-build`
+* `make wasm-build` builds WebAssembly under `./wasm-build`
+* `make docs` builds the static html website under `./docs`
+* `make local_server` serves the static website on [http://localhost:8000/](http://localhost:8000/)
 * `make fmt` runs clang-format on the source
 * `make tidy` runs clang-tidy on the source
