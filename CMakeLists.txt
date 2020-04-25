@@ -53,3 +53,6 @@ target_link_libraries(demo_arrive objs)
 
 add_executable(demo_waypoint cmd/demo_waypoint.cpp)
 target_link_libraries(demo_waypoint objs)
+
+add_executable(demo_wander cmd/demo_wander.cpp)
+target_link_libraries(demo_wander objs)
