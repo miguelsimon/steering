@@ -1,11 +1,12 @@
 #include "boid.h"
 #include <Eigen/Dense>
 
-Boid::Boid(Eigen::Vector2f pos) {
+Boid::Boid(Eigen::Vector2f pos, float r) {
     p_ = pos;
     v_ = {0, 0};
     f_ = {0, 0};
     m_ = 1;
+    r_ = r;
 };
 
 void Boid::step(float dt) {

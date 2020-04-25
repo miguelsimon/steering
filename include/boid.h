@@ -10,8 +10,10 @@ class Boid {
     Eigen::Vector2f v_;
     Eigen::Vector2f f_;
     float m_;
+    float r_;
 
-    Boid(Eigen::Vector2f pos);
+    Boid() = default;
+    Boid(Eigen::Vector2f pos, float r);
     Eigen::Vector2f get_heading();
     void step(float dt);
 };

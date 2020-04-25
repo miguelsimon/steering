@@ -6,11 +6,11 @@
 
 using Eigen::Vector2f;
 
-ArriveWorld::ArriveWorld() : target_({0, 0}), boid_({0, 0}){};
+ArriveWorld::ArriveWorld() : target_({0, 0}), boid_({0, 0}, 10){};
 
 void ArriveWorld::render(Draw &draw) {
     draw.target(target_);
-    draw.boid(boid_.p_);
+    draw.circle(boid_.p_, boid_.r_);
 };
 
 void ArriveWorld::click(float x, float y) { target_ = {x, y}; };

@@ -6,10 +6,10 @@
 
 using Eigen::Vector2f;
 
-WaypointWorld::WaypointWorld() : boid_({0, 0}) { reset({0, 0}); };
+WaypointWorld::WaypointWorld() { reset({0, 0}); };
 
 void WaypointWorld::reset(Eigen::Vector2f start) {
-    boid_ = Boid(start);
+    boid_ = Boid(start, 10);
 
     auto path = std::vector<Vector2f>();
 
@@ -21,12 +21,12 @@ void WaypointWorld::reset(Eigen::Vector2f start) {
     float max_force = 1;
     float desired_speed = 0.1;
 
-    path_follow_ = BWaypoint(max_force, desired_speed, dt_, boid_.p_,
-                               boid_.v_, boid_.m_, path);
+    path_follow_ = BWaypoint(max_force, desired_speed, dt_, boid_.p_, boid_.v_,
+                             boid_.m_, path);
 };
 
 void WaypointWorld::render(Draw &draw) {
-    draw.boid(boid_.p_);
+    draw.circle(boid_.p_, boid_.r_);
 
     auto path = path_follow_.path_;
 

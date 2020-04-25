@@ -13,7 +13,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 
 # shell_minimal.html is needed for the build, don't know how to add it
 # as a dependency so that changes to it trigger a rebuild so this is
-# a hack
+# a hack that requires make clean to update
   FILE(COPY website/shell_minimal.html DESTINATION "${CMAKE_BINARY_DIR}")
 else ()
   find_package(SDL2 REQUIRED)

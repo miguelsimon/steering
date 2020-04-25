@@ -12,7 +12,6 @@ class Draw {
     void clear();
     void segment(Eigen::Vector2f a, Eigen::Vector2f b);
     void circle(Eigen::Vector2f center, float r);
-    void boid(Eigen::Vector2f pos);
     void target(Eigen::Vector2f pos);
 
     Eigen::Vector2i to_screen(Eigen::Vector2f p);

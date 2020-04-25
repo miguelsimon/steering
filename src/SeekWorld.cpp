@@ -6,11 +6,11 @@
 
 using Eigen::Vector2f;
 
-SeekWorld::SeekWorld() : target_({0, 0}), boid_({0, 0}){};
+SeekWorld::SeekWorld() : target_({0, 0}), boid_({0, 0}, 10){};
 
 void SeekWorld::render(Draw &draw) {
     draw.target(target_);
-    draw.boid(boid_.p_);
+    draw.circle(boid_.p_, boid_.r_);
 };
 
 void SeekWorld::click(float x, float y) { target_ = {x, y}; };

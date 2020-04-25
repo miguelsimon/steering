@@ -3,7 +3,7 @@
 #include "catch2/catch.hpp"
 
 TEST_CASE("Boid") {
-    Boid b = Boid({0, 0});
+    Boid b = Boid({0, 0}, 10);
     b.step(1);
     CHECK(b.p_[0] == Approx(0));
     CHECK(b.p_[1] == Approx(0));

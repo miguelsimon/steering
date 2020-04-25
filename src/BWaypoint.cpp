@@ -5,9 +5,8 @@
 
 using Eigen::Vector2f;
 
-BWaypoint::BWaypoint(float max_force, float desired_speed, float dt,
-                         Vector2f p, Vector2f v, float mass,
-                         std::vector<Eigen::Vector2f> path)
+BWaypoint::BWaypoint(float max_force, float desired_speed, float dt, Vector2f p,
+                     Vector2f v, float mass, std::vector<Eigen::Vector2f> path)
     : path_(path), path_idx_(0),
       seek_(max_force, desired_speed, dt, {0, 0}, p, v, mass) {
     assert(path.size() > 0);

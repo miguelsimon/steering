@@ -53,8 +53,6 @@ void Draw::circle(Vector2f center, float radius) {
     }
 };
 
-void Draw::boid(Vector2f pos) { circle(pos, 10); };
-
 void Draw::target(Vector2f pos) {
     Vector2f x({5, 0});
     Vector2f y({0, 5});

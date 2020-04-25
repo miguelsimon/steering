@@ -10,9 +10,8 @@ class BWaypoint {
   public:
     BWaypoint() = default;
 
-    BWaypoint(float max_force, float desired_speed, float dt,
-                Eigen::Vector2f p, Eigen::Vector2f v, float mass,
-                std::vector<Eigen::Vector2f> path);
+    BWaypoint(float max_force, float desired_speed, float dt, Eigen::Vector2f p,
+              Eigen::Vector2f v, float mass, std::vector<Eigen::Vector2f> path);
     Eigen::Vector2f get_force();
 
     std::vector<Eigen::Vector2f> path_;
