@@ -11,6 +11,9 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
   set(SDL2_IMAGE_LIBRARIES "-s USE_SDL_IMAGE=2")
   SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} --shell-file shell_minimal.html")
 
+# shell_minimal.html is needed for the build, don't know how to add it
+# as a dependency so that changes to it trigger a rebuild so this is
+# a hack
   FILE(COPY website/shell_minimal.html DESTINATION "${CMAKE_BINARY_DIR}")
 else ()
   find_package(SDL2 REQUIRED)
@@ -29,6 +32,7 @@ target_include_directories(objs PUBLIC
   ${INCLUDES}
   ${EIGEN_INCLUDES}
   ${SDL2_INCLUDE_DIRS})
+
 target_link_libraries(objs ${SDL2_LIBRARIES})
 
 # test target
