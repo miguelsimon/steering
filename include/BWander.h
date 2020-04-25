@@ -12,7 +12,7 @@ class BWander {
     BWander(float max_force, float max_speed, float dt, Eigen::Vector2f p,
             Eigen::Vector2f v, float mass);
 
-    Eigen::Vector2f get_force();
+    auto get_force() -> Eigen::Vector2f;
 
     void set_p(Eigen::Vector2f p);
     void set_v(Eigen::Vector2f v);

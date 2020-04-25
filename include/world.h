@@ -10,7 +10,7 @@ class World {
     virtual void render(Draw &draw) = 0;
     virtual void click(float x, float y) = 0;
     virtual void step() = 0;
-    virtual float get_step_milliseconds() = 0;
+    virtual auto get_step_milliseconds() -> float = 0;
 };
 
 #endif

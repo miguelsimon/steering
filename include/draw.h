@@ -14,8 +14,8 @@ class Draw {
     void circle(Eigen::Vector2f center, float r);
     void target(Eigen::Vector2f pos);
 
-    Eigen::Vector2i to_screen(Eigen::Vector2f p);
-    Eigen::Vector2f from_screen(Eigen::Vector2i p);
+    auto to_screen(Eigen::Vector2f p) -> Eigen::Vector2i;
+    auto from_screen(Eigen::Vector2i p) -> Eigen::Vector2f;
 
   private:
     SDL_Renderer *renderer_;

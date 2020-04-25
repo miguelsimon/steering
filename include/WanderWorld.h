@@ -18,7 +18,7 @@ class WanderWorld : public World {
     void render(Draw &draw) override;
     void click(float x, float y) override;
     void step() override;
-    float get_step_milliseconds() override;
+    auto get_step_milliseconds() -> float override;
     float dt_ = 10;
 };
 

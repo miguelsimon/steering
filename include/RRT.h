@@ -5,8 +5,8 @@
 template <class T, class U> class RRT {
   public:
     RRT(T root) { vertices_.push_back(root); };
-    int nearest(T p);
-    int add_vertex(int parent, T p, U action);
+    auto nearest(T p) -> int;
+    auto add_vertex(int parent, T p, U action) -> int;
 
   private:
     std::vector<T> vertices_;
