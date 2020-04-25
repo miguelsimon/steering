@@ -8,7 +8,7 @@ class BArrive {
     BArrive(float max_force, float desired_speed, float dt,
             Eigen::Vector2f target, Eigen::Vector2f p, Eigen::Vector2f v,
             float mass, float slow_radius);
-    Eigen::Vector2f get_force();
+    auto get_force() -> Eigen::Vector2f;
 
     float max_force_;
     float desired_speed_;

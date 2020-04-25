@@ -20,7 +20,7 @@ fmt:
 # https://gitlab.kitware.com/cmake/cmake/issues/18926
 .PHONY: tidy
 tidy:
-	clang-tidy src/*.cpp -checks=$(TIDY_CHECKS) -- $(CPPFLAGS) $(CXXFLAGS)
+	clang-tidy src/*.cpp -header-filter=include/ -checks=$(TIDY_CHECKS) -- $(CPPFLAGS) $(CXXFLAGS)
 
 .PHONY: build
 build:

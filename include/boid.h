@@ -14,7 +14,7 @@ class Boid {
 
     Boid() = default;
     Boid(Eigen::Vector2f pos, float r);
-    Eigen::Vector2f get_heading();
+    auto get_heading() -> Eigen::Vector2f;
     void step(float dt);
 };
 
