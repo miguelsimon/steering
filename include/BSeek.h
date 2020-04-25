@@ -5,10 +5,15 @@
 
 class BSeek {
   public:
+    BSeek() = default;
+
     BSeek(float max_force, float desired_speed, float dt,
           Eigen::Vector2f target, Eigen::Vector2f p, Eigen::Vector2f v,
           float mass);
     Eigen::Vector2f get_force();
+
+    void set_p(Eigen::Vector2f p);
+    void set_v(Eigen::Vector2f v);
 
     float max_force_;
     float desired_speed_;

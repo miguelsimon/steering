@@ -24,3 +24,7 @@ auto BSeek::get_force() -> Vector2f {
     }
     return accel * mass_;
 }
+
+void BSeek::set_p(Eigen::Vector2f p) { p_ = p; };
+
+void BSeek::set_v(Eigen::Vector2f v) { v_ = v; };
