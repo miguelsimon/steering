@@ -5,11 +5,6 @@
 using Eigen::Vector2f;
 using Eigen::Vector2i;
 
-static auto to_screen(Vector2f x, Vector2f origin, float scale) -> Vector2i {
-    Vector2f res = ((x - origin) * scale).array().round();
-    return res.cast<int>();
-}
-
 Draw::Draw(SDL_Renderer *renderer) {
     renderer_ = renderer;
     scale_ = 1;
@@ -28,8 +23,8 @@ void Draw::clear() {
 void Draw::segment(Eigen::Vector2f a, Eigen::Vector2f b) {
     const int c = 255;
 
-    Vector2i ai = to_screen(a, origin_, scale_);
-    Vector2i bi = to_screen(b, origin_, scale_);
+    Vector2i ai = to_screen(a);
+    Vector2i bi = to_screen(b);
 
     SDL_SetRenderDrawColor(renderer_, c, c, c, SDL_ALPHA_OPAQUE);
     int res = SDL_RenderDrawLine(renderer_, ai[0], ai[1], bi[0], bi[1]);
@@ -65,4 +60,13 @@ void Draw::target(Vector2f pos) {
     Vector2f y({0, 5});
     segment(pos - x, pos + x);
     segment(pos - y, pos + y);
+};
+
+auto Draw::to_screen(Vector2f p) -> Vector2i {
+    Vector2f res = ((p - origin_) * scale_).array().round();
+    return res.cast<int>();
+};
+
+auto Draw::from_screen(Vector2i p) -> Vector2f {
+    return (p.cast<float>() / scale_) + origin_;
 };

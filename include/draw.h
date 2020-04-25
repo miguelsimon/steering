@@ -15,6 +15,9 @@ class Draw {
     void boid(Eigen::Vector2f pos);
     void target(Eigen::Vector2f pos);
 
+    Eigen::Vector2i to_screen(Eigen::Vector2f p);
+    Eigen::Vector2f from_screen(Eigen::Vector2i p);
+
   private:
     SDL_Renderer *renderer_;
     float scale_;
