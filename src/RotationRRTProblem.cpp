@@ -47,8 +47,6 @@ static auto to_segment_endpoints(Vector3f p, float length)
     return std::make_tuple(a, b);
 };
 
-RotationRRTProblem::RotationRRTProblem(){};
-
 auto RotationRRTProblem::random_state() -> Vector3f {
     std::uniform_real_distribution<float> x(ll_[0], ur_[0]);
     std::uniform_real_distribution<float> y(ll_[1], ur_[1]);

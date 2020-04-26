@@ -12,7 +12,7 @@ auto segments_intersect(Eigen::Vector2f a, Eigen::Vector2f b, Eigen::Vector2f c,
 
 class RotationRRTProblem : public RRTProblem<Eigen::Vector3f, Eigen::Vector3f> {
   public:
-    RotationRRTProblem();
+    RotationRRTProblem() = default;
     auto random_state() -> Eigen::Vector3f override;
     auto plan(Eigen::Vector3f src, Eigen::Vector3f dst)
         -> std::tuple<bool, Eigen::Vector3f, Eigen::Vector3f> override;
