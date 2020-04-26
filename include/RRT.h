@@ -1,5 +1,6 @@
 #ifndef RRT_H
 #define RRT_H
+#include <assert.h>
 #include <functional>
 #include <random>
 #include <vector>
@@ -88,7 +89,7 @@ void RRT<T, U>::visit_path(size_t node,
 
     // backtrack to start
     while (node != 0) {
-        size_t parent_idx = parents_[node - 1];
+        size_t parent_idx = get_parent(node);
 
         T dst = vertices_[node];
         T src = vertices_[parent_idx];
