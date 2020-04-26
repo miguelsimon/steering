@@ -1,10 +1,16 @@
-<h2 id="steering-behaviours">Steering behaviours</h2>
-<p>A few <a href="https://www.red3d.com/cwr/steer/gdc99/">steering behaviours</a> implemented in C++ and compiled to WebAssembly.</p>
+<h2 id="overview">Overview</h2>
 <p>Source for building this site can be found at <a href="https://github.com/miguelsimon/steering">https://github.com/miguelsimon/steering</a>.</p>
 <p>This is mainly an exercise to teach myself cmake and C++.</p>
+<h2 id="rapidly-exploring-random-trees">Rapidly exploring random trees</h2>
+<p><a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree">Rapidly exploring random trees</a> are one of the coolest ideas ever, <a href="http://msl.cs.uiuc.edu/~lavalle/papers/Lav98c.pdf">the paper by LaValle</a> is excellent. They allow the statement and solution of extremely broad classes of planning problems.</p>
 <ul>
-<li>Seek: <a href="demo_seek.html">demo_seek.html</a></li>
-<li>Arrive: <a href="demo_arrive.html">demo_arrive.html</a></li>
-<li>Waypoint following: <a href="demo_waypoint.html">demo_waypoint.html</a></li>
-<li>Wander: <a href="demo_wander.html">demo_wander.html</a></li>
+<li><a href="demo_trivial_rrt.html">demo_trivial_rrt.html</a> Builds a trivial RRT in 2 dimensions.</li>
+</ul>
+<h2 id="steering-behaviours">Steering behaviours</h2>
+<p>A few <a href="https://www.red3d.com/cwr/steer/gdc99/">steering behaviours</a> implemented in C++ and compiled to WebAssembly.</p>
+<ul>
+<li><a href="demo_seek.html">demo_seek.html</a> Seek steering behaviour, note oscillations when goal is reached.</li>
+<li><a href="demo_arrive.html">demo_arrive.html</a> Arrive behaviour, no oscillations :)</li>
+<li><a href="demo_waypoint.html">demo_waypoint.html</a> Simple waypoint following.</li>
+<li><a href="demo_wander.html">demo_wander.html</a> Wander steering behaviour.</li>
 </ul>

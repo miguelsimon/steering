@@ -56,3 +56,6 @@ target_link_libraries(demo_waypoint objs)
 
 add_executable(demo_wander cmd/demo_wander.cpp)
 target_link_libraries(demo_wander objs)
+
+add_executable(demo_trivial_rrt cmd/demo_trivial_rrt.cpp)
+target_link_libraries(demo_trivial_rrt objs)
