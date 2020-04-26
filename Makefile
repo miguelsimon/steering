@@ -39,6 +39,7 @@ docs: wasm-build
 	rm -rf docs
 	mkdir docs
 	pandoc website/index.md -o docs/index.html
+	cp website/*.png docs/
 	cp wasm-build/*.wasm docs/
 	cp wasm-build/*.js docs/
 	cp wasm-build/*.html docs/

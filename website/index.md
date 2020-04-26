@@ -11,6 +11,8 @@ This is mainly an exercise to teach myself cmake and C++.
 * [demo_trivial_rrt.html](demo_trivial_rrt.html) Builds a trivial RRT in 2 dimensions.
 * [demo_collision_rrt.html](demo_collision_rrt.html) Attempt to steer a circular actor to a goal, avoiding collisions with obstacles.
 
+<img src="rrt.png" width="200"/>
+
 ## Steering behaviours
 
 A few [steering behaviours](https://www.red3d.com/cwr/steer/gdc99/) implemented in C++ and compiled to WebAssembly.
