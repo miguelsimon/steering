@@ -1,5 +1,4 @@
 #include "TrivialRRTWorld.h"
-#include "boid.h"
 #include "draw.h"
 #include <Eigen/Dense>
 #include <iostream>
@@ -23,11 +22,12 @@ auto TrivialRRTProblem::plan(Vector2f src, Vector2f dst)
     return std::make_tuple(true, src + delta, delta);
 };
 
-void draw_action(Draw &draw, Vector2f src, Vector2f dst, Vector2f action) {
+static void draw_action(Draw &draw, Vector2f src, Vector2f dst,
+                        Vector2f action) {
     draw.segment(src, dst);
 };
 
-void draw_problem(Draw &draw, TrivialRRTProblem &problem) {
+static void draw_problem(Draw &draw, TrivialRRTProblem &problem) {
     Vector2f ll = problem.ll_;
     Vector2f ur = problem.ur_;
     draw.segment(ll, Vector2f(ll[0], ur[1]));
@@ -36,8 +36,8 @@ void draw_problem(Draw &draw, TrivialRRTProblem &problem) {
     draw.segment(Vector2f(ur[0], ll[1]), ll);
 };
 
-void draw_rrt(Draw &draw, RRT<Vector2f, Vector2f> &rrt,
-              TrivialRRTProblem &problem) {
+static void draw_rrt(Draw &draw, RRT<Vector2f, Vector2f> &rrt,
+                     TrivialRRTProblem &problem) {
     draw_problem(draw, problem);
 
     for (int i = 0; i < rrt.parents_.size(); i++) {

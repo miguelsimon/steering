@@ -9,6 +9,7 @@ This is mainly an exercise to teach myself cmake and C++.
 [Rapidly exploring random trees](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree) are one of the coolest ideas ever, [the paper by LaValle](http://msl.cs.uiuc.edu/~lavalle/papers/Lav98c.pdf) is excellent. They allow the statement and solution of extremely broad classes of planning problems.
 
 * [demo_trivial_rrt.html](demo_trivial_rrt.html) Builds a trivial RRT in 2 dimensions.
+* [demo_collision_rrt.html](demo_collision_rrt.html) Attempt to steer a circular actor to a goal, avoiding collisions with obstacles.
 
 ## Steering behaviours
 
