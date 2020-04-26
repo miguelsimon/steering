@@ -40,12 +40,12 @@ static void draw_rrt(Draw &draw, RRT<Vector2f, Vector2f> &rrt,
                      TrivialRRTProblem &problem) {
     draw_problem(draw, problem);
 
-    for (int i = 0; i < rrt.parents_.size(); i++) {
-        Vector2f dst = rrt.vertices_[i + 1];
-        Vector2f action = rrt.actions_[i];
-        Vector2f src = rrt.vertices_[rrt.parents_[i]];
+    auto draw_lambda = [draw](Vector2f src, Vector2f dst,
+                              Vector2f action) mutable {
         draw_action(draw, src, dst, action);
     };
+
+    rrt.visit(draw_lambda);
 };
 
 TrivialRRTWorld::TrivialRRTWorld() : rrt_({0, 0}) { reset(Vector2f()); };

@@ -99,26 +99,26 @@ static void draw_rrt(Draw &draw, RRT<Vector2f, Vector2f> &rrt,
                      CollisionRRTProblem &problem) {
     draw_problem(draw, problem);
 
-    for (int i = 0; i < rrt.parents_.size(); i++) {
-        Vector2f dst = rrt.vertices_[i + 1];
-        Vector2f action = rrt.actions_[i];
-        Vector2f src = rrt.vertices_[rrt.parents_[i]];
+    auto draw_lambda = [draw](Vector2f src, Vector2f dst,
+                              Vector2f action) mutable {
         draw_action(draw, src, dst, action);
     };
+
+    rrt.visit(draw_lambda);
 };
 
 static void draw_solution(Draw &draw, RRT<Vector2f, Vector2f> &rrt,
                           CollisionRRTProblem &problem) {
 
     // start at solution
-    int current_idx = rrt.nearest(problem.goal_);
+    int solution_idx = rrt.nearest(problem.goal_);
 
-    // backtrack to start
-    while (current_idx != 0) {
-        Vector2f current = rrt.vertices_.at(current_idx);
-        draw.circle(current, problem.actor_radius_);
-        current_idx = rrt.parents_.at(current_idx - 1);
+    auto draw_lambda = [draw, problem](Vector2f src, Vector2f dst,
+                                       Vector2f action) mutable {
+        draw.circle(dst, problem.actor_radius_);
     };
+
+    rrt.visit_path(solution_idx, draw_lambda);
 };
 
 CollisionRRTWorld::CollisionRRTWorld() : rrt_({0, 0}), solved_(false) {
@@ -144,8 +144,8 @@ void CollisionRRTWorld::click(float x, float y) {
 
 auto CollisionRRTWorld::attempt() -> bool {
     rrt_.step(problem_);
-    size_t last_idx = rrt_.vertices_.size() - 1;
-    Vector2f last = rrt_.vertices_[last_idx];
+    size_t last_idx = rrt_.size() - 1;
+    Vector2f last = rrt_.get_vertex(last_idx);
     return problem_.goal_reached(last);
 };
 
@@ -153,7 +153,7 @@ void CollisionRRTWorld::step() {
     const int max_tree_size = 10000;
     const int attempts_per_step = 10;
 
-    int tree_size = rrt_.vertices_.size();
+    int tree_size = rrt_.size();
 
     if (!solved_ && tree_size < max_tree_size) {
         for (int i = 0; i < attempts_per_step; i++) {
