@@ -125,29 +125,9 @@ CollisionRRTWorld::CollisionRRTWorld() : rrt_({0, 0}), solved_(false) {
     reset(Vector2f());
 };
 
-auto CollisionRRTWorld::solve() -> bool {
-    const int max_steps = 4000;
-    for (int i = 0; i < max_steps; i++) {
-        rrt_.step(problem_);
-        size_t last_idx = rrt_.vertices_.size() - 1;
-        Vector2f last = rrt_.vertices_[last_idx];
-        if (problem_.goal_reached(last)) {
-            return true;
-        };
-    };
-    return false;
-};
-
 void CollisionRRTWorld::reset(Vector2f p) {
     rrt_ = RRT<Vector2f, Vector2f>(p);
     solved_ = false;
-
-    if (solve()) {
-        solved_ = true;
-        std::cout << "Goal reached!" << std::endl;
-    } else {
-        std::cout << "Failed to reach goal" << std::endl;
-    };
 };
 
 void CollisionRRTWorld::render(Draw &draw) {
@@ -162,6 +142,26 @@ void CollisionRRTWorld::click(float x, float y) {
     reset(p);
 };
 
-void CollisionRRTWorld::step(){};
+auto CollisionRRTWorld::attempt() -> bool {
+    rrt_.step(problem_);
+    size_t last_idx = rrt_.vertices_.size() - 1;
+    Vector2f last = rrt_.vertices_[last_idx];
+    return problem_.goal_reached(last);
+};
+
+void CollisionRRTWorld::step() {
+    const int max_tree_size = 10000;
+    const int attempts_per_step = 50;
+
+    int tree_size = rrt_.vertices_.size();
+
+    if (!solved_ && tree_size < max_tree_size) {
+        for (int i = 0; i < attempts_per_step; i++) {
+            solved_ = attempt();
+            if (solved_)
+                break;
+        };
+    };
+};
 
 auto CollisionRRTWorld::get_step_milliseconds() -> float { return dt_; };

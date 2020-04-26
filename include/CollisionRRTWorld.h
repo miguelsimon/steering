@@ -38,6 +38,7 @@ class CollisionRRTWorld : public World {
     CollisionRRTProblem problem_;
     float dt_ = 100;
     bool solved_;
+    auto attempt() -> bool;
 
   public:
     CollisionRRTWorld();
@@ -46,7 +47,6 @@ class CollisionRRTWorld : public World {
     void step() override;
     auto get_step_milliseconds() -> float override;
     void reset(Eigen::Vector2f);
-    auto solve() -> bool;
 };
 
 #endif
