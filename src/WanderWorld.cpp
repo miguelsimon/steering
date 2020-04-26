@@ -14,6 +14,8 @@ void WanderWorld::reset() {
 
     wander_ =
         BWander(max_force, desired_speed, dt_, boid_.p_, boid_.v_, boid_.m_);
+
+    wander_.rnd_generator_ = std::default_random_engine(time(0));
 };
 
 void WanderWorld::render(Draw &draw) {

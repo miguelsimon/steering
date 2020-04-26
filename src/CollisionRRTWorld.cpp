@@ -9,7 +9,7 @@ static auto circles_intersect(Vector2f p1, float r1, Vector2f p2, float r2)
     -> bool {
     float distance = (p1 - p2).norm();
     return distance < r1 + r2;
-}
+};
 
 CollisionRRTProblem::CollisionRRTProblem() {
     obstacle_center_.emplace_back(Vector2f(50, 50));

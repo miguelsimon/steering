@@ -28,11 +28,11 @@ class BWander {
     float wander_r_ = 20;
     float wander_k_ = 15;
     float wander_segments_ = 32;
+    std::default_random_engine rnd_generator_;
 
   private:
     Eigen::Vector2f get_wander_force();
     Eigen::Vector2f get_wander_circle_p();
-    std::default_random_engine rnd_generator_;
 };
 
 #endif
