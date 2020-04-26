@@ -151,7 +151,7 @@ auto CollisionRRTWorld::attempt() -> bool {
 
 void CollisionRRTWorld::step() {
     const int max_tree_size = 10000;
-    const int attempts_per_step = 50;
+    const int attempts_per_step = 10;
 
     int tree_size = rrt_.vertices_.size();
 

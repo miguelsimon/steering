@@ -63,3 +63,31 @@ void demo_main_loop(void *arg) {
         }
     }
 }
+
+void demo_sync_main_loop(void *arg) {
+    auto *state = static_cast<DemoState *>(arg);
+
+    Draw draw = Draw(state->ren);
+    draw.clear();
+
+    state->world->render(draw);
+    SDL_RenderPresent(state->ren);
+
+    state->world->step();
+
+    SDL_Event e;
+
+    while (SDL_PollEvent(&e)) {
+        if (e.type == SDL_QUIT) {
+            state->quit = true;
+        }
+        if (e.type == SDL_MOUSEBUTTONDOWN) {
+
+            int x = 0;
+            int y = 0;
+            SDL_GetMouseState(&x, &y);
+
+            state->world->click((float)x, (float)y);
+        }
+    }
+}

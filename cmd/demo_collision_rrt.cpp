@@ -20,10 +20,10 @@ int main() {
         << std::endl;
 
 #ifdef __EMSCRIPTEN__
-    emscripten_set_main_loop_arg(demo_main_loop, &state, 0, true);
+    emscripten_set_main_loop_arg(demo_sync_main_loop, &state, 0, true);
 #else
     while (!state.quit) {
-        demo_main_loop(&state);
+        demo_sync_main_loop(&state);
     }
 #endif
 }

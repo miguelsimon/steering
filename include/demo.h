@@ -13,6 +13,7 @@ struct DemoState {
 };
 
 void demo_main_loop(void *);
+void demo_sync_main_loop(void *);
 
 auto demo_setup_sdl() -> std::tuple<SDL_Window *, SDL_Renderer *>;
 

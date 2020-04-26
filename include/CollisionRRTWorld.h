@@ -36,7 +36,7 @@ class CollisionRRTWorld : public World {
     Eigen::Vector2f target_;
     RRT<Eigen::Vector2f, Eigen::Vector2f> rrt_;
     CollisionRRTProblem problem_;
-    float dt_ = 100;
+    float dt_ = 1;
     bool solved_;
     auto attempt() -> bool;
 
