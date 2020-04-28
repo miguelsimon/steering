@@ -30,10 +30,13 @@ auto RotationRRTProblem::random_state() -> Vector3f {
 auto RotationRRTProblem::plan(Vector3f src, Vector3f goal)
     -> std::tuple<bool, Vector3f, Vector3f> {
 
-    std::array<Vector3f, 6> actions = {
-        Vector3f(1, 0, 0),         Vector3f(-1, 0, 0),
-        Vector3f(0, 1, 0),         Vector3f(0, -1, 0),
-        Vector3f(0, 0, M_PI / 16), Vector3f(0, 0, -M_PI / 16)};
+    const float dr = M_PI / 16;
+
+    std::array<Vector3f, 10> actions = {
+        Vector3f(1, 0, dr),  Vector3f(-1, 0, dr),  Vector3f(0, 1, dr),
+        Vector3f(0, -1, dr), Vector3f(1, 0, -dr),  Vector3f(-1, 0, -dr),
+        Vector3f(0, 1, -dr), Vector3f(0, -1, -dr), Vector3f(0, 0, dr),
+        Vector3f(0, 0, -dr)};
 
     Vector3f action;
     Vector3f dst;

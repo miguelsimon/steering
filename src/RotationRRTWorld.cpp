@@ -41,18 +41,26 @@ static void draw_solution(Draw &draw, RRT<Vector3f, Vector3f> &rrt,
 
     // start at solution
     int solution_idx = rrt.nearest(problem.goal_);
+    int i = 0;
 
-    auto draw_lambda = [draw, problem](Vector3f src, Vector3f dst,
-                                       Vector3f action) mutable {
+    auto draw_lambda = [draw, problem, i](Vector3f src, Vector3f dst,
+                                          Vector3f action) mutable {
         auto [a, b] =
             problem.to_segment_endpoints(dst, problem.segment_length_);
-        draw.segment(a, b);
+        if (i % 5 == 0) {
+            draw.segment(a, b);
+        };
+        i += 1;
     };
 
     rrt.visit_path(solution_idx, draw_lambda);
 };
 
-RotationRRTWorld::RotationRRTWorld() : rrt_({0, 0, 0}), solved_(false) {
+RotationRRTWorld::RotationRRTWorld() : rrt_({0, 0, M_PI / 2}), solved_(false) {
+
+    problem_.obstacle_a_.push_back(Vector2f(100, 0));
+    problem_.obstacle_b_.push_back(Vector2f(100, 95));
+
     problem_.obstacle_a_.push_back(Vector2f(100, 100));
     problem_.obstacle_b_.push_back(Vector2f(100, 300));
 
@@ -65,7 +73,7 @@ RotationRRTWorld::RotationRRTWorld() : rrt_({0, 0, 0}), solved_(false) {
 };
 
 void RotationRRTWorld::reset(Vector2f p) {
-    rrt_ = RRT<Vector3f, Vector3f>(Vector3f(p[0], p[1], 0));
+    rrt_ = RRT<Vector3f, Vector3f>(Vector3f(p[0], p[1], M_PI / 2));
     solved_ = false;
 };
 
