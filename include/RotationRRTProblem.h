@@ -7,17 +7,19 @@
 #include <Eigen/Dense>
 #include <cmath>
 
-auto segments_intersect(Eigen::Vector2f a, Eigen::Vector2f b, Eigen::Vector2f c,
-                        Eigen::Vector2f d) -> bool;
-
 class RotationRRTProblem : public RRTProblem<Eigen::Vector3f, Eigen::Vector3f> {
   public:
     RotationRRTProblem() = default;
     auto random_state() -> Eigen::Vector3f override;
-    auto plan(Eigen::Vector3f src, Eigen::Vector3f dst)
+    auto plan(Eigen::Vector3f src, Eigen::Vector3f goal)
         -> std::tuple<bool, Eigen::Vector3f, Eigen::Vector3f> override;
     auto is_free(Eigen::Vector3f p) -> bool;
     auto goal_reached(Eigen::Vector3f p) -> bool;
+    static auto segments_intersect(Eigen::Vector2f a, Eigen::Vector2f b,
+                                   Eigen::Vector2f c, Eigen::Vector2f d)
+        -> bool;
+    static auto to_segment_endpoints(Eigen::Vector3f p, float length)
+        -> std::tuple<Eigen::Vector2f, Eigen::Vector2f>;
 
     float max_norm_ = 2;
 
