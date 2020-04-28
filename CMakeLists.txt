@@ -62,3 +62,6 @@ target_link_libraries(demo_trivial_rrt objs)
 
 add_executable(demo_collision_rrt cmd/demo_collision_rrt.cpp)
 target_link_libraries(demo_collision_rrt objs)
+
+add_executable(demo_rotation_rrt cmd/demo_rotation_rrt.cpp)
+target_link_libraries(demo_rotation_rrt objs)

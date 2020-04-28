@@ -29,7 +29,7 @@ class RotationRRTProblem : public RRTProblem<Eigen::Vector3f, Eigen::Vector3f> {
     Eigen::Vector3f goal_ = Eigen::Vector3f(200, 200, M_PI);
 
     float segment_length_ = 20;
-    float goal_radius_ = 2;
+    float goal_radius_ = 10;
 
     // segment obstacle endpoints
     std::vector<Eigen::Vector2f> obstacle_a_;
