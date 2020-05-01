@@ -25,7 +25,7 @@ tidy:
 .PHONY: build
 build:
 	mkdir -p build
-	cd build && cmake .. && make
+	cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make
 
 .PHONY: wasm-build
 wasm-build:

@@ -19,6 +19,8 @@ else ()
   find_package(SDL2 REQUIRED)
 endif ()
 
+add_subdirectory(deps/glad)
+
 set(CATCH2_INCLUDES deps/Catch2/single_include/)
 set(EIGEN_INCLUDES deps/eigen/)
 
@@ -65,3 +67,6 @@ target_link_libraries(demo_collision_rrt objs)
 
 add_executable(demo_rotation_rrt cmd/demo_rotation_rrt.cpp)
 target_link_libraries(demo_rotation_rrt objs)
+
+add_executable(hello_opengl cmd/hello_opengl.cpp)
+target_link_libraries(hello_opengl objs glad)
